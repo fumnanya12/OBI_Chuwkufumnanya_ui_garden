@@ -1,25 +1,25 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Text } from "./Text";
 
 const meta: Meta<typeof Text> = {
   title: "Components/Text",
   component: Text,
   argTypes: {
-  text: {
-    control: "text",
+    text: {
+      control: "text",
+    },
+    color: {
+      control: "color",
+    },
+    size: {
+      control: "select",
+      options: ["small", "medium", "large"],
+    },
+    crossedOut: {
+      control: "boolean",
+    },
   },
-  color: {
-    control: "color",
-  },
-  size: {
-    control: "select",
-    options: ["small", "medium", "large"],
-  },
-  crossedOut: {
-    control: "boolean",
-  },
-}
-}
+};
 
 export default meta;
 
@@ -37,4 +37,3 @@ export const CrossedOut: Story = {
     crossedOut: true,
   },
 };
-

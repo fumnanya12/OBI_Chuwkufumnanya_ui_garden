@@ -8,10 +8,8 @@ const HeroSection = styled.section<{
   width: 100%;
   min-height: 350px;
   padding: 4rem 2rem;
-  background-image: linear-gradient(
-      rgba(0, 0, 0, 0.45),
-      rgba(0, 0, 0, 0.45)
-    ),
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)),
     url(${(props) => props.$imageUrl});
   background-size: cover;
   background-position: center;
@@ -21,15 +19,11 @@ const HeroSection = styled.section<{
   justify-content: center;
   opacity: ${(props) => (props.$disabled ? 0.5 : 1)};
   cursor: ${(props) => (props.$disabled ? "not-allowed" : "default")};
-
-  
 `;
 
 const Title = styled.h1`
   font-size: 3rem;
   margin: 0;
-
-
 `;
 
 const Subtitle = styled.p`

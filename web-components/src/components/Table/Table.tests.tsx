@@ -1,10 +1,5 @@
 import { render } from "@testing-library/react";
-import {
-  Table,
-  TableHeader,
-  TableRow,
-  TableCell,
-} from "./Table";
+import { Table, TableHeader, TableRow, TableCell } from "./Table";
 
 describe("Table", () => {
   test("component is visible", () => {
@@ -20,7 +15,7 @@ describe("Table", () => {
             <TableCell>Obi</TableCell>
           </TableRow>
         </tbody>
-      </Table>
+      </Table>,
     );
 
     const table = getByRole("table");
@@ -41,7 +36,7 @@ describe("Table", () => {
             <TableCell>Obi</TableCell>
           </TableRow>
         </tbody>
-      </Table>
+      </Table>,
     );
 
     const table = getByRole("table");

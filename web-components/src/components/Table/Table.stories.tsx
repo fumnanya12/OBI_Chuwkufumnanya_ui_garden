@@ -1,11 +1,5 @@
-import type { Meta, StoryObj } from "@storybook/react";
-import {
-  Table,
-  TableHeader,
-  TableRow,
-  TableCell,
-  TableFooter,
-} from "./Table";
+import type { Meta, StoryObj } from "@storybook/react-vite";
+import { Table, TableHeader, TableRow, TableCell, TableFooter } from "./Table";
 
 const meta: Meta<typeof Table> = {
   title: "Components/Table",
@@ -23,7 +17,6 @@ type Story = StoryObj<typeof Table>;
 
 export const Default: Story = {
   args: {
-    
     disabled: false,
   },
   render: (args) => (

@@ -19,11 +19,9 @@ const StyledLabel = styled.p<{
     }
   }};
 
-  text-decoration: ${(props) =>
-    props.$crossedOut ? "line-through" : "none"};
+  text-decoration: ${(props) => (props.$crossedOut ? "line-through" : "none")};
 
-  opacity: ${(props) =>
-    props.$crossedOut ? "0.6" : "1"};
+  opacity: ${(props) => (props.$crossedOut ? "0.6" : "1")};
 
   display: block;
 `;

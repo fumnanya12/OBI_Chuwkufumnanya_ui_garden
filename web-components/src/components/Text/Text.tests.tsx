@@ -3,9 +3,7 @@ import { Text } from "./Text";
 
 describe("Text", () => {
   test("component is visible", () => {
-    const { getByText } = render(
-      <Text text="Hello World" />
-    );
+    const { getByText } = render(<Text text="Hello World" />);
 
     const text = getByText("Hello World");
 
@@ -13,12 +11,7 @@ describe("Text", () => {
   });
 
   test("text appears crossed out", () => {
-    const { getByText } = render(
-      <Text
-        text="Hello World"
-        crossedOut
-      />
-    );
+    const { getByText } = render(<Text text="Hello World" crossedOut />);
 
     const text = getByText("Hello World");
 

@@ -4,24 +4,15 @@ import { HeroImage } from "./HeroImage";
 describe("HeroImage", () => {
   test("component is visible", () => {
     const { getByText } = render(
-      <HeroImage
-        title="Welcome"
-        subtitle="Hero subtitle"
-      />
+      <HeroImage title="Welcome" subtitle="Hero subtitle" />,
     );
 
-    expect(
-      getByText("Welcome")
-    ).toBeVisible();
+    expect(getByText("Welcome")).toBeVisible();
   });
 
   test("hero image appears disabled", () => {
     const { getByText } = render(
-      <HeroImage
-        title="Disabled Hero"
-        subtitle="Hero subtitle"
-        disabled
-      />
+      <HeroImage title="Disabled Hero" subtitle="Hero subtitle" disabled />,
     );
 
     const title = getByText("Disabled Hero");

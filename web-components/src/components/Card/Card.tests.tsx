@@ -8,21 +8,19 @@ describe("Card", () => {
         title="Assignment Card"
         description="A card component."
         imageUrl="/images/car.jpg"
-      />
+      />,
     );
 
-    expect(
-      getByText("Assignment Card")
-    ).toBeVisible();
+    expect(getByText("Assignment Card")).toBeVisible();
   });
 
-   test("card appears disabled", () => {
+  test("card appears disabled", () => {
     render(
       <Card
         title="Disabled Card"
         description="This card is visually disabled."
         disabled
-      />
+      />,
     );
 
     const card = document.getElementById("card");

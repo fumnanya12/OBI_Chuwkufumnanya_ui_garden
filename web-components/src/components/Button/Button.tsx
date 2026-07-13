@@ -17,10 +17,9 @@ const StyledButton = styled.button<{ $backgroundColor?: string }>`
     opacity: 0.7;
   }
 
-  &:focus{
+  &:focus {
     background-color: ${(props) => props.$backgroundColor || "#2563eb"};
     outline: 2px solid blue;
-
   }
 `;
 

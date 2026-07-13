@@ -20,11 +20,6 @@ export const Img = ({
   ...props
 }: ImgProps) => {
   return (
-    <StyledImg
-      $rounded={rounded}
-      $disabled={disabled}
-      alt={alt}
-      {...props}
-    />
+    <StyledImg $rounded={rounded} $disabled={disabled} alt={alt} {...props} />
   );
 };

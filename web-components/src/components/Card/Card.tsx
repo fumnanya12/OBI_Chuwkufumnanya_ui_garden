@@ -13,8 +13,6 @@ const StyledCard = styled.div<{
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
   opacity: ${(props) => (props.$disabled ? 0.5 : 1)};
   cursor: ${(props) => (props.$disabled ? "not-allowed" : "pointer")};
-
-
 `;
 
 const CardImage = styled.img`

@@ -12,8 +12,6 @@ const StyledTable = styled.table<{ $disabled?: boolean }>`
   border-collapse: collapse;
   opacity: ${(props) => (props.$disabled ? 0.5 : 1)};
   cursor: ${(props) => (props.$disabled ? "not-allowed" : "default")};
-
-
 `;
 
 const StyledHeader = styled.th<{ $disabled?: boolean }>`

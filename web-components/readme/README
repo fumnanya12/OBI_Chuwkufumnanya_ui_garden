@@ -1,0 +1,107 @@
+# using Docker Containers
+
+## Create/run React Vite
+
+```bash
+npm create vite@latest Web-components
+cd Web-components
+npm install
+npm run dev -- --host 0.0.0.0 --port 7775
+```
+
+Open:
+
+```bash
+http://localhost:7775
+```
+
+## Create Dockerfile
+
+In the project root, create a file named Dockerfile:
+
+```bash
+FROM node:22-alpine
+
+WORKDIR /app
+
+COPY package*.json ./
+
+RUN npm install
+
+COPY . .
+
+EXPOSE 8083
+
+CMD ["npm", "run", "storybook", "--", "--host", "0.0.0.0", "--port", "8083"]
+```
+
+## Create .dockerignore
+
+```bash
+node_modules
+dist
+.git
+```
+
+## Build Docker image
+
+```bash
+docker build -t web-component .
+```
+
+## Run Docker container on port 8083
+
+```bash
+docker run --name lastName_firstName_coding_assignment11 -p 8083:8083 web-component
+```
+
+Open:
+
+```bash
+http://localhost:8083
+```
+
+# Installation of others libaries
+
+## Storybook Installation
+
+Storybook was installed to provide component documentation, interactive controls, and isolated component development.
+
+```bash
+npx storybook@latest init
+
+Storybook runs using:
+
+npm run storybook
+
+Default URL:
+
+http://localhost:6006
+```
+
+## Styled Components Installation
+
+Styled Components was installed to provide component-level styling.
+
+```bash
+npm install styled-components
+
+Type definitions were installed for TypeScript support.
+
+npm install -D @types/styled-components
+```
+
+Styled Components were used instead of CSS files to encapsulate styling within each component.
+
+## Testing Setup
+
+Vitest was selected as the testing framework because the project uses Vite.
+
+Required packages were installed:
+
+```bash
+npm install -D vitest
+npm install -D @testing-library/react
+npm install -D @testing-library/jest-dom
+npm install -D jsdom
+```

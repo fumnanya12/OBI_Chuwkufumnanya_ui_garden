@@ -1,25 +1,25 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Label } from "./Label";
 
 const meta: Meta<typeof Label> = {
   title: "Components/Label",
   component: Label,
   argTypes: {
-  text: {
-    control: "text",
+    text: {
+      control: "text",
+    },
+    color: {
+      control: "color",
+    },
+    size: {
+      control: "select",
+      options: ["small", "medium", "large"],
+    },
+    crossedOut: {
+      control: "boolean",
+    },
   },
-  color: {
-    control: "color",
-  },
-  size: {
-    control: "select",
-    options: ["small", "medium", "large"],
-  },
-  crossedOut: {
-    control: "boolean",
-  },
-}
-}
+};
 
 export default meta;
 
@@ -37,4 +37,3 @@ export const CrossedOut: Story = {
     crossedOut: true,
   },
 };
-

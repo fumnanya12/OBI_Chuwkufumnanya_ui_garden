@@ -24,21 +24,19 @@ export const Radio = ({
 }: RadioProps) => {
   return (
     <>
-    {labels?.map((label) =>(
-    <Label key={label}>
-      <StyledRadio
-        type="radio"
-        disabled={disabled}
-        value={label}
-        checked={selected === label}
-        {...props}
-      />
- 
-        {label}
+      {labels?.map((label) => (
+        <Label key={label}>
+          <StyledRadio
+            type="radio"
+            disabled={disabled}
+            value={label}
+            checked={selected === label}
+            {...props}
+          />
 
-  
-    </Label>
-    ))}
+          {label}
+        </Label>
+      ))}
     </>
   );
 };

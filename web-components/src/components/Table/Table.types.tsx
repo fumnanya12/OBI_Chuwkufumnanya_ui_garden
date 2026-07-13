@@ -5,7 +5,7 @@ export type TableProps = ComponentProps<"table"> & {
 };
 
 export type TableHeaderProps = ComponentProps<"th"> & {
-  header1?:string;
+  header1?: string;
   disabled?: boolean;
 };
 

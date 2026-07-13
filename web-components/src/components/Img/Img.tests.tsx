@@ -4,10 +4,7 @@ import { Img } from "./Img";
 describe("Img", () => {
   test("component is visible", () => {
     const { getByAltText } = render(
-      <Img
-        src="/images/car.jpg"
-        alt="Car Image"
-      />
+      <Img src="/images/car.jpg" alt="Car Image" />,
     );
 
     const image = getByAltText("Car Image");
@@ -17,11 +14,7 @@ describe("Img", () => {
 
   test("image appears disabled", () => {
     const { getByAltText } = render(
-      <Img
-        src="/images/car.jpg"
-        alt="Disabled Image"
-        disabled
-      />
+      <Img src="/images/car.jpg" alt="Disabled Image" disabled />,
     );
 
     const image = getByAltText("Disabled Image");

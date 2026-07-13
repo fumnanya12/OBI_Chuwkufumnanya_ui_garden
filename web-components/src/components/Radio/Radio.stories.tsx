@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Radio } from "./Radio";
 
 const meta: Meta<typeof Radio> = {
@@ -34,7 +34,7 @@ export const Default: Story = {
 export const Checked: Story = {
   args: {
     labels: ["Student", "Developer", "Designer"],
-     selected: "Developer",
+    selected: "Developer",
   },
 };
 

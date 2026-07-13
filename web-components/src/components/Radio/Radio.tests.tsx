@@ -7,7 +7,7 @@ describe("Radio", () => {
       <Radio
         labels={["Student", "Developer", "Designer"]}
         selected="Developer"
-      />
+      />,
     );
 
     const radio = getByLabelText("Developer");
@@ -20,7 +20,7 @@ describe("Radio", () => {
       <Radio
         labels={["Student", "Developer", "Designer"]}
         selected="Developer"
-      />
+      />,
     );
 
     const radio = getByLabelText("Developer");
@@ -34,7 +34,7 @@ describe("Radio", () => {
         labels={["Student", "Developer", "Designer"]}
         selected="Developer"
         disabled
-      />
+      />,
     );
 
     const radio = getByLabelText("Developer");

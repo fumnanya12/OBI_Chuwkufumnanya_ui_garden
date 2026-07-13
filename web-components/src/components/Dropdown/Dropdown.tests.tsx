@@ -4,13 +4,7 @@ import { Dropdown } from "./Dropdown";
 describe("Dropdown", () => {
   test("component is visible", () => {
     const { getByRole } = render(
-      <Dropdown
-        options={[
-          "Student",
-          "Developer",
-          "Designer",
-        ]}
-      />
+      <Dropdown options={["Student", "Developer", "Designer"]} />,
     );
 
     const dropdown = getByRole("combobox");
@@ -20,14 +14,7 @@ describe("Dropdown", () => {
 
   test("dropdown is disabled", () => {
     const { getByRole } = render(
-      <Dropdown
-        options={[
-          "Student",
-          "Developer",
-          "Designer",
-        ]}
-        disabled
-      />
+      <Dropdown options={["Student", "Developer", "Designer"]} disabled />,
     );
 
     const dropdown = getByRole("combobox");
