@@ -1,73 +1,96 @@
-# React + TypeScript + Vite
+# UC Component Library – Assignment 13
+ Project Overview
+This project extends the UI Component Library created in Assignment 12 by integrating automated code quality checks and Continuous Integration (CI) practices. The application uses React, TypeScript, Storybook, Vitest, ESLint, Prettier, Husky, GitHub Actions, Docker, and Nginx.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+The purpose of this assignment is to ensure that all code committed to the project follows formatting standards, passes linting requirements, successfully passes automated tests, and can be deployed through a production Docker container.
 
-Currently, two official plugins are available:
+## Prerequisites
+The following software must be installed:
+- Node.js 22or later
+- npm
+- Git
+- Docker Desktop
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(["dist"]),
-  {
-    files: ["**/*.{ts,tsx}"],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ["./tsconfig.node.json", "./tsconfig.app.json"],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-]);
+Verify installations:
+```bash
+node -v
+npm -v
+git --version
+docker --version
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Create Dockerfile
+```bash
+# Stage 1: Build the Storybook production files
+FROM node:22-alpine AS build
 
-```js
-// eslint.config.js
-import reactX from "eslint-plugin-react-x";
-import reactDom from "eslint-plugin-react-dom";
+WORKDIR /obi_fumnanya_ui_garden_build_checks
 
-export default defineConfig([
-  globalIgnores(["dist"]),
-  {
-    files: ["**/*.{ts,tsx}"],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs["recommended-typescript"],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ["./tsconfig.node.json", "./tsconfig.app.json"],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-]);
+COPY package.json package-lock.json ./
+
+RUN npm ci
+
+COPY . .
+
+RUN npm run build-storybook
+
+
+# Stage 2: Serve the production files with Nginx
+FROM nginx:alpine
+
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+
+COPY --from=build \
+  /obi_fumnanya_ui_garden_build_checks/storybook-static \
+  /usr/share/nginx/html
+
+EXPOSE 8018
+
+CMD ["nginx", "-g", "daemon off;"]
+```
+
+## Create .dockerignore
+
+```bash
+node_modules
+dist
+.git
+```
+
+## Nginx Configuration
+
+A custom Nginx configuration was created to:
+
+- listen on port 8018
+- serve Storybook static files
+- support direct URL navigation
+``` bash
+server {
+    listen 8018;
+    server_name localhost;
+
+    root /usr/share/nginx/html;
+    index index.html;
+
+    location / {
+        try_files $uri $uri/ /index.html;
+    }
+}
+```
+## Build Docker image
+
+```bash
+docker build -t <image name > .
+```
+
+## Run Docker container on port 8083
+
+```bash
+docker run --name <container name > -p 8018:8018 <image name >
+```
+
+Open:
+
+```bash
+http://localhost:8018
 ```

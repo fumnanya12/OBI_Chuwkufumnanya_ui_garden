@@ -3,3 +3,8 @@ dist
 storybook-static
 .git
 .vscode
+.github
+.husky
+Dockerfile
+README.md
+npm-debug.log
