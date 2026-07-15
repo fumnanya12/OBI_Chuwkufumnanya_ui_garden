@@ -38,6 +38,6 @@ export const Button = ({
     >
       {label}
     </StyledButton>
-    </div>
+   
   );
 };
