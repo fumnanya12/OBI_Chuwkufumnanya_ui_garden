@@ -30,6 +30,7 @@ export const Button = ({
   ...props
 }: ButtonProps) => {
   return (
+    <div>
     <StyledButton
       $backgroundColor={backgroundColor}
       disabled={disabled}
@@ -37,5 +38,6 @@ export const Button = ({
     >
       {label}
     </StyledButton>
+    </div>
   );
 };
